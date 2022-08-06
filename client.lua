@@ -68,7 +68,7 @@ function CreateWitness(target)
         if IsPedDeadOrDying(witness) then
             TriggerEvent("vorp:Tip", "~t2~ Witness Was Killed!", 4000)
         else
-            TriggerServerEvent("VORP_Law:CheckJob")
+            TriggerServerEvent("bst-law:CheckJob")
             spawnPolice = true
 
             Wanted(town)
@@ -477,20 +477,20 @@ function CleanUpAndReset(Deletenpc)
 end
 
 -- Trigger Wanted ---
-RegisterNetEvent("VORP_Law:TriggerWanted")
+RegisterNetEvent("bst-law:TriggerWanted")
 AddEventHandler(
-    "VORP_Law:TriggerWanted",
+    "bst-law:TriggerWanted",
     function()
         if spawnPolice == true then
-            TriggerServerEvent("VORP_Law:SendNotifications", GetPlayers(), coords)
+            TriggerServerEvent("bst-law:SendNotifications", GetPlayers(), coords)
         end
     end
 )
 
 -- Notification + blip Map for Players Police
-RegisterNetEvent("VORP_Law:NotifyLaw")
+RegisterNetEvent("bst-law:NotifyLaw")
 AddEventHandler(
-    "VORP_Law:NotifyLaw",
+    "bst-law:NotifyLaw",
     function(coords)
         TriggerEvent(
             "vorp:NotifyLeft",
