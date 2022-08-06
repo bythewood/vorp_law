@@ -69,10 +69,12 @@ function CreateWitness(target)
             TriggerEvent("vorp:Tip", "~t2~ Witness Was Killed!", 4000)
         else
             TriggerServerEvent("bst-law:CheckJob")
+            print("checked job")
+            TriggerServerEvent("bst-law:SendNotifications", GetPlayers(), coords)
+            print("notified")
             spawnPolice = true
 
-            Wanted(town)
-            wantedblip()
+           
         end
     else
         TriggerEvent("vorp:Tip", "~t6~ No NPC Nearby To Witness!", 4000)
@@ -482,7 +484,10 @@ AddEventHandler(
     "bst-law:TriggerWanted",
     function()
         if spawnPolice == true then
-            TriggerServerEvent("bst-law:SendNotifications", GetPlayers(), coords)
+            Wanted(town)
+            wantedblip()
+            
+            print("triggered")
         end
     end
 )
