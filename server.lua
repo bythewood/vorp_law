@@ -19,7 +19,7 @@ AddEventHandler("bst-law:SendNotifications", function(players, coords)
       end
       
     else
-      Debug("Notified???")
+      print("Notified???")
     end
   end
 
@@ -35,7 +35,7 @@ AddEventHandler("bst-law:CheckJob", function()
 		print('Job: ' .. job)
 		if job ~= Config.LawJob then
 			TriggerClientEvent("bst-law:TriggerWanted", _source)
-      Debug("WantedTriggered")
+      print("WantedTriggered")
       
 		end
 	end)
