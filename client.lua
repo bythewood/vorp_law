@@ -92,7 +92,7 @@ Citizen.CreateThread(
             Wait(1)
             if isshooting and town and spawnPolice == false then
                 if GetPedType(target) == 4 or GetPedType(target) == 5 or GetPedType(target) == 2 and town then
-                    
+                    print(target)
                     
                     if inValues({2, 4, 5}, GetPedType(target)) then
                 TriggerEvent(
@@ -109,9 +109,25 @@ Citizen.CreateThread(
             end
         end
     end
+        end
+    end
+)
+
+
+
+Citizen.CreateThread(
+    function()
+        while true do
+            local ispedmeleecombat = IsPedInMeleeCombat(PlayerPedId())
+            local isshooting = IsPedShooting(PlayerPedId())
+            local retrval, target = GetPlayerTargetEntity(PlayerId())
+            
+            Wait(1)
             if ispedmeleecombat and town and spawnPolice == false then
-               
-                coords = GetEntityCoords(PlayerPedId())
+                if GetPedType(target) == 4 or GetPedType(target) == 5 or GetPedType(target) == 2 and town then
+                    --print(target)
+                    
+                    if inValues({2, 4, 5}, GetPedType(target)) then
                 TriggerEvent(
                     "vorp:ShowAdvancedRightNotification",
                     "Possible Assault Committed",
@@ -119,14 +135,22 @@ Citizen.CreateThread(
                     "awards_set_h_006",
                     "COLOR_RED",
                     3000
-                )      
+                )
+                coords = GetEntityCoords(PlayerPedId())
                 Citizen.InvokeNative(0x59B57C4B06531E1E, false)
-                CreateWitness()
-                Wait(20000)
+                CreateWitness(target)
+                break
+                end
             end
         end
     end
+end
+           
+           
+    
 )
+
+
                 
 function inValues(table, value)
     local table = table
