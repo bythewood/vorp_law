@@ -85,14 +85,14 @@ end
 Citizen.CreateThread(
     function()
         while true do
-            local ispedmeleecombat = IsPedInMeleeCombat(PlayerPedId())
+            
             local isshooting = IsPedShooting(PlayerPedId())
             local retrval, target = GetEntityPlayerIsFreeAimingAt(PlayerId())
             
             Wait(1)
             if isshooting and town and spawnPolice == false then
                 if GetPedType(target) == 4 or GetPedType(target) == 5 or GetPedType(target) == 2 and town then
-                    print(target)
+                    
                     
                     if inValues({2, 4, 5}, GetPedType(target)) then
                 TriggerEvent(
@@ -119,13 +119,13 @@ Citizen.CreateThread(
     function()
         while true do
             local ispedmeleecombat = IsPedInMeleeCombat(PlayerPedId())
-            local isshooting = IsPedShooting(PlayerPedId())
+           
             local retrval, target = GetPlayerTargetEntity(PlayerId())
             
             Wait(1)
             if ispedmeleecombat and town and spawnPolice == false then
                 if GetPedType(target) == 4 or GetPedType(target) == 5 or GetPedType(target) == 2 and town then
-                    --print(target)
+                    
                     
                     if inValues({2, 4, 5}, GetPedType(target)) then
                         
