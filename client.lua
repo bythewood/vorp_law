@@ -128,6 +128,7 @@ Citizen.CreateThread(
                     --print(target)
                     
                     if inValues({2, 4, 5}, GetPedType(target)) then
+                        
                 TriggerEvent(
                     "vorp:ShowAdvancedRightNotification",
                     "Possible Assault Committed",
@@ -139,7 +140,7 @@ Citizen.CreateThread(
                 coords = GetEntityCoords(PlayerPedId())
                 Citizen.InvokeNative(0x59B57C4B06531E1E, false)
                 CreateWitness(target)
-                break
+            
                 end
             end
         end
